@@ -2,7 +2,7 @@ const earthquakeURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary
 const tectonicPlatesURL = "https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json";
 
 d3.json(earthquakeURL,(data) => {
-   console.log(data);
+   //console.log(data);
    createFeatures(data.features);
 });
 
@@ -69,14 +69,14 @@ const createMap = (earthquakes)=> {
 
   	var myMap = L.map("map", {
   		center: [37.09, -95.71],
-  		zoom: 2.5,
+  		zoom: 4,
   		layers: [outdoors, earthquakes, tectonicplates]
   	}); 
 
   	d3.json(tectonicPlatesURL, function(plateData) {
   		L.geoJSON(plateData,{
   			color:"gold",
-  			weight:2
+  			weight:1
   		})
   		.addTo(tectonicplates);
   	});
@@ -88,7 +88,7 @@ const createMap = (earthquakes)=> {
 var legend = L.control({position: 'bottomright'});
 legend.onAdd = function(){
     var div = L.DomUtil.create('div', 'info legend')
-    var limits = [0, 1, 2, 3, 4, 5];
+    var limits = [...Array(6).keys()];
     var labels = [];
 
 
@@ -118,6 +118,6 @@ const chooseColor = (a) =>{
     (a > 1)? "#0367A6" : "#9DBF54"; 
 }
   
-const getRadius=(value) =>{
-      return value*25000
+const getRadius=(r) =>{
+      return r*25000
   }
