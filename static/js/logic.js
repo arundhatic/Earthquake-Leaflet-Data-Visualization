@@ -15,7 +15,7 @@ const createFeatures = (earthquakeData) => {
             <hr><p>${new Date(feature.properties.time)}</p>`);
     }
 
-   const poinToLayer = (feature,latlng) =>{
+   const pointToLayer = (feature,latlng) =>{
         return new L.circle(latlng,{
             radius: getRadius(feature.properties.mag),
             fillColor: chooseColor(feature.properties.mag),
@@ -28,7 +28,7 @@ const createFeatures = (earthquakeData) => {
     // Run the onEachFeature function once for each piece of data in the array
     var earthquakes = L.geoJSON(earthquakeData, {
       onEachFeature: onEachFeature,
-      pointToLayer: poinToLayer
+      pointToLayer: pointToLayer
     });
   
     // Sending our earthquakes layer to the createMap function
