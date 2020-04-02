@@ -67,7 +67,7 @@ Your final product will be assessed on the following metrics:
 
 * Professionalism
 
-## screen shots of teh finished 
+## screen shots 
  ![](screen_shots/screen_shot1.png)
  ![](screen_shots/screen_shot2.png)
  ![](screen_shots/screen_shot3.png)
